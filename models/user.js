@@ -1,4 +1,3 @@
-//TODO: Build Model
 
 // Dependencies -> mongoose and set schema variable
 const mongoose = require('mongoose');
@@ -8,6 +7,17 @@ const Schema = mongoose.Schema;
 
 
 // Schema Options
+const options = {
+	timestamps: true,
+	// id: false,
+	// toJSON: {
+	// 	virtuals: true,
+	// 	transform: (_doc, userDocToReturn) =>{
+	// 		delete userDocToReturn.password
+	// 		return userDocToReturn
+	// 	}
+	}
+}
 
 // User Schema sub schemas
   // Profile? 
@@ -48,12 +58,12 @@ const userSchema = new Schema({
   }],
   userCollection: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'MixList'
+    ref: 'Collection'
   }],
 
 
-})
+}, options)
 
 // module.exports model
 
-module.exports = mongoos.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema)
