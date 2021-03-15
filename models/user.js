@@ -17,7 +17,7 @@ const options = {
 	// 		return userDocToReturn
 	// 	}
 	}
-}
+
 
 // User Schema sub schemas
   // Profile? 

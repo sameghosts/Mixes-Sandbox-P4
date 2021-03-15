@@ -34,7 +34,7 @@ const trackSchema = new Schema({
   // Comments
   const commentSchema = new Schema({
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: MONGOOSE.Schema.Types.ObjectId,
       ref: 'User' 
     },
     body: String,
