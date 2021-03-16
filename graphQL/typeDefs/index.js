@@ -2,6 +2,11 @@
 // gql dependency from ASE
 import { gql } from 'apollo-server-express';
 
-export default [];
+export default typeDefs = gql`
+#Schema go here base query   
+type Query {
+    hello: String!
+  }
+`;
 
 //module exports build schema with type def

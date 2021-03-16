@@ -9,7 +9,7 @@ const { ApolloServer, gql } = require('apollo-server-express')
 import {
   typeDefs,
   resolvers
-} from './graphql'
+} from './graphQL'
 
 // Instatiate express app 
 const app = EXPRESS()
@@ -26,11 +26,7 @@ app.use(EXPRESS.json())
 const SERVER = new ApolloServer({
   typeDefs: typeDefs,
   resolvers: resolvers,
-  playground: {
-    settings: {
-      'editor.theme': 'light'
-    }
-  }
+  playground: true
 });
 
 SERVER.applyMiddleware({
