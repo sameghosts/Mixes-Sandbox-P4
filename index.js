@@ -3,6 +3,13 @@
 require('dotenv').config()
 const CORS = require('cors')
 const EXPRESS = require('express')
+const { ApolloServer, gql } = require('apollo-server-express')
+
+
+import {
+  typeDefs,
+  resolvers
+} from './graphql'
 
 // Instatiate express app 
 const app = EXPRESS()
@@ -16,6 +23,21 @@ app.use(EXPRESS.urlencoded({ extended: false}))
 app.use(EXPRESS.json())
 
 //TODO: set up initial calls and stub todo routes with graphql
+const SERVER = new ApolloServer({
+  typeDefs: typeDefs,
+  resolvers: resolvers,
+  playground: {
+    settings: {
+      'editor.theme': 'light'
+    }
+  }
+});
+
+SERVER.applyMiddleware({
+  app: app
+});
+
+
 // dummy home route
 app.get('/', (req, res) => {
   res.send("Mixes Sandbox app API Home (Next, Mongo, Express, GraphQL, Node")

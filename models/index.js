@@ -1,8 +1,8 @@
 // Dependencies
-require('dotenv').config
+require('dotenv').config()
 const MONGOOSE = require('mongoose');
 
-
+console.log(process.env.PORT, '🚨🚨🚨🚨🚨🚨');
 //connection
 MONGOOSE.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
