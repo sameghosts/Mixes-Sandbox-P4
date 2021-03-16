@@ -1,5 +1,5 @@
 // Query resolver for hello
-export default {
+module.exports = {
   Query: {
     hello: ()=> "Hello from graphql"
   }

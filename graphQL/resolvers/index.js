@@ -1,4 +1,4 @@
-import greeting from './greeting'
-export default [
+const greeting =require('./greeting')
+module.exports = [
   greeting
 ];

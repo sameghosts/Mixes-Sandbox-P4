@@ -6,10 +6,10 @@ const EXPRESS = require('express')
 const { ApolloServer, gql } = require('apollo-server-express')
 
 
-import {
+const {
   typeDefs,
   resolvers
-} from './graphQL'
+} = require('./graphQL')
 
 // Instatiate express app 
 const app = EXPRESS()
