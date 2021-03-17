@@ -1,9 +1,11 @@
+// ------ Dependencies
 const { ApolloError } = require('apollo-server-errors')
 const bcrypt = require('bcrypt')
 
-// Auth Middleware
+// ------ Auth Middleware
 const { issueToken, serializedUser } = require('../../helper/UserAuth');
 
+// ------ User Resolvers 
 module.exports = {
   Query: {
     infoUserResolvers: () => {

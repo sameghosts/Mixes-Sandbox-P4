@@ -12,10 +12,10 @@ const mixlist = gql`
 type MixList {
   id: ID!
   name: String!
-  user: String!
+  user: String
   authorDisplay: String
   imageUrl: String
-  tagline: String
+  tagline: String!
   description: String
   featuredText: String
   tracks: [Track]
@@ -23,14 +23,27 @@ type MixList {
   createdAt: String!
   updatedAt: String!
 }
-# Mixlist exted queries
+# Mixlist extend Query
+extend type Query {
+  getAllMixes: [MixList!]!
+}
 
-# Mixlist extend mutations
-
+# Mixlist extend Mutations
+extend type Mutation {
+  createMixList(newMix: MixListInput): MixList!
+  # deleteMixList
+  #updateMixList
+}
 # Other types / Inputs
-#input MixListInput
 #input CommentInput
 #input TrackInput
+
+#input MixListInput
+input MixListInput {
+  name: String!
+  authorDisplay: String!
+  tagline: String!
+}
 
 type Comment {
   id: ID!

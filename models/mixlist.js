@@ -49,10 +49,10 @@ const trackSchema = new Schema({
 // Mixlist Schema 
 const mixListSchema = new Schema({
   name: String,
-  user: [{
+  user: {
     type: MONGOOSE.Schema.Types.ObjectId,
     ref: 'User'
-  }],
+  },
   authorDisplay: String,
   imageUrl: String,
   tagline: String,
