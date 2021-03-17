@@ -18,7 +18,7 @@ const user = gql`
   }
 
   # User Queries
-  type Query {
+  extend type Query {
     infoUserResolvers: String
     #authUser: User! @isAuth
     loginUser(username: String!, password: String!):AuthUser!
@@ -27,11 +27,11 @@ const user = gql`
   }
 
   # User Mutations
-  type Mutation{
+  extend type Mutation{
     registerUser(newUser: UserInput!): AuthUser!
   }
   # TODO: figure out if I will be doing subscriptions
-  # type Subscription {
+  # extend type Subscription {
   #   _:String
   # }
 
@@ -61,4 +61,4 @@ const user = gql`
   
 `;
 
-module.exports = typeDefs;
+module.exports = user;

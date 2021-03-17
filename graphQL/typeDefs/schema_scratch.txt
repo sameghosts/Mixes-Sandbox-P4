@@ -1,3 +1,13 @@
+user420
+   "user": {
+        "id": "60523c4c6befbe1192054d94",
+        "email": "test420@test.com",
+        "username": "TestUser420"
+      }
+    }
+  }
+}
+
 const typeDefs = gql`
   type Query {
     _:String
