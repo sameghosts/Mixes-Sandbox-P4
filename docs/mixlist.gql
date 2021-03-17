@@ -1,15 +1,12 @@
-//TODO: Finish MixList Base resolvers
-
-// ------ Depedencies
-//Import Depenencies
-
-const { ApolloError } = require('apollo-server-errors')
+# MixList Initial query with dummy data
 
 
-// ------ MixList Resolvers
-// export object
-module.exports = {
-  Query: {
+
+
+
+
+#Dummy Resolvers
+Query: {
     getAllMixes: () =>{
       return [{
         name: "Trance Mix 1",
@@ -31,6 +28,19 @@ module.exports = {
       }
     }
   }
+  # Dummy apollo
+  query GET_ALL_MIXES{
+  getAllMixes{
+    name
+    authorDisplay
+    tagline
+  }
 }
-// QUERY Resolvers
-// MUTATION Resolvers
+
+mutation CREATE_MIX_LIST{
+  createMixList {
+    name
+    authorDisplay
+    tagline
+  }
+}
