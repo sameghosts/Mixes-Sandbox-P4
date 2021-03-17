@@ -1,0 +1,30 @@
+# Mutation to Register User (currently payload error)
+mutation REGISTER_USER(
+    $email: String!,
+    $username: String!, 
+    $password: String!,
+  	$avatar: String
+  ) {
+    registerUser(
+    newUser: {
+      email: $email,
+      username: $username,
+      password: $password,
+      avatar: $avatar
+    }
+  ) {
+    token
+    user {
+      id
+      email
+      username
+    }
+  }
+}
+# Test query params / Payload
+# {
+#  	"email": "test4@test.com",
+#   "username": "test4",
+#   "password": "123123123",
+#   "avatar": "https://pbs.twimg.com/profile_images/475256309135470592/7nXBKyPR_400x400.jpeg"
+# }

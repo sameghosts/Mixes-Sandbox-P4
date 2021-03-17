@@ -17,6 +17,9 @@ const {
 // Instatiate express app 
 const app = EXPRESS()
 
+// Models for graphql server context
+const AppModels = require('./models');
+
 //middleware
   //? Do I need cors?
 app.use(CORS())
@@ -30,10 +33,10 @@ const SERVER = new ApolloServer({
   typeDefs: typeDefs,
   resolvers: resolvers,
   schemaDirectives: schemaDirectives,
-  // typeDefs,
-  // resolvers,
-  // schemaDirectives,
-  playground: true
+  playground: true,
+  context: {
+    ...AppModels
+  }
 });
 
 SERVER.applyMiddleware({
