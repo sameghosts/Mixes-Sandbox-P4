@@ -1,9 +1,70 @@
 //TODO: Build out build schema and then stub out resolvers
-const baseDefs = require('./baseDefs')
-const user = require('./user');
-const mixlist= require('./mixlist');
+const { gql } = require('apollo-server-express');
 
-module.exports = { baseDefs, user }
+
+const typeDefs = gql`
+  type Query {
+    _:String
+    infoUserResolvers: String
+    #authUser: User! @isAuth
+    #loginUser(username: String!, password: String!):AuthUser!
+  }
+  type Mutation{
+    _:String
+    registerUser(newUser: UserInput!): AuthUser!
+  }
+  type Subscription {
+    _:String
+  }
+  #Schema for new users
+  input UserInput {
+    email: String!
+    username: String!
+    password: String!
+    avatar: String
+  }
+  type User {
+    id: ID!
+    username: String!
+    email: String!
+    avatar: String
+    profile: UserProfile
+    #userMixes: [MixList]
+    #userCollection: Collection
+    createdAt: String
+    updatedAt: String
+  }
+
+  type UserProfile {
+    displayName: String
+    bio: String
+    profilePic: String
+    following: [User]
+    followers: [User]
+  }
+
+  type AuthUser {
+    user: User!
+    token: String!
+  }
+  
+`;
+
+module.exports = typeDefs;
+// //! Not working trying one type def file 
+// const baseDefs = require('./baseDefs')
+// const user = require('./user');
+// const mixlist= require('./mixlist');
+// const typeDefs = { user }
+// module.exports = typeDefs;
+
+
+
+
+
+
+
+//! Original Code for test:
 
 // gql dependency from ASE
 // const { gql } = require('apollo-server-express');

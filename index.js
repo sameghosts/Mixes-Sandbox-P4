@@ -10,6 +10,9 @@ const {
   typeDefs,
   resolvers
 } = require('./graphQL')
+const {
+  schemaDirectives
+} = require('./graphQL/directives')
 
 // Instatiate express app 
 const app = EXPRESS()
@@ -26,6 +29,10 @@ app.use(EXPRESS.json())
 const SERVER = new ApolloServer({
   typeDefs: typeDefs,
   resolvers: resolvers,
+  schemaDirectives: schemaDirectives,
+  // typeDefs,
+  // resolvers,
+  // schemaDirectives,
   playground: true
 });
 
