@@ -1,5 +1,7 @@
 const { gql } = require('apollo-server-express');
 //TODO: profile??? does it go here or its own graphql schema
+
+//TODO: Migrate from index for module joining, double check it works 
 module.exports =  gql`
 #Base Queries for user
   extend type Query {
