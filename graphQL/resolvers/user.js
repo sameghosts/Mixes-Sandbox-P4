@@ -2,7 +2,7 @@ const { ApolloError } = require('apollo-server-errors')
 const bcrypt = require('bcrypt')
 
 // Auth Middleware
-const { issueToken, serializedUser } = require('../../middelware/UserAuth');
+const { issueToken, serializedUser } = require('../../helper/UserAuth');
 
 module.exports = {
   Query: {
