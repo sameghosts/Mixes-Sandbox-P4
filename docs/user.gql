@@ -21,10 +21,36 @@ mutation REGISTER_USER(
     }
   }
 }
+
 # Test query params / Payload
 # {
 #  	"email": "test4@test.com",
 #   "username": "test4",
-#   "password": "123123123",
+#   "password": super secret password,
 #   "avatar": "https://pbs.twimg.com/profile_images/475256309135470592/7nXBKyPR_400x400.jpeg"
 # }
+
+# Write your query or mutation here
+query LOGIN_USER(
+  $username: String!,
+  $password: String!
+){
+  loginUser(
+    username: $username,
+    password: $password
+  ){
+    token
+    user {
+      id
+      email
+      username
+    }
+  }
+  
+}
+# loginUser payload query variables
+# {
+#   "username": "test6",
+#   "password": super secret password you know
+# }
+
