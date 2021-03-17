@@ -7,7 +7,7 @@ const typeDefs = gql`
     _:String
     infoUserResolvers: String
     #authUser: User! @isAuth
-    #loginUser(username: String!, password: String!):AuthUser!
+    loginUser(username: String!, password: String!):AuthUser!
   }
   type Mutation{
     _:String

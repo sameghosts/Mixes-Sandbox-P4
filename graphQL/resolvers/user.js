@@ -8,8 +8,41 @@ module.exports = {
   Query: {
     infoUserResolvers: () =>{
       return 'Hello from user resolver.'
+    },
+    loginUser:  async (_, {
+      username,
+      password
+    }, {
+      User
+    }) => {
+      try {
+
+        // find user by username
+        let user = await User.findOne({ username });
+        if (!user) {
+          throw new Error("Username not found.");
+        }
+        // check for the password using bcrypt
+        let isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+          throw new Error("Invalid password.");
+        }
+        // Serialize the User
+        user.id = user._id;
+        user = serializedUser(user.toObject());
+        // Issue New Authentication Token
+        let token = await issueToken(user);
+        //send back user and token
+        return {
+          user,
+          token
+        };
+      } catch (err) {
+        throw new ApolloError(err.message, 404);
+      }
     }
   },
+
   Mutation: {
     registerUser: async (_, {
       newUser
@@ -37,6 +70,7 @@ module.exports = {
       user.password = await bcrypt.hash(newUser.password, 10);
       // save the user to db
       let result = await user.save();
+      result = result.toObject();
       result.id = result._id
       result = serializedUser(result);
       // issue the authentication JWT token
