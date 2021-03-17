@@ -1,7 +1,17 @@
+// ------ Dependency: gql from apollo server express dependency 
 const { gql } = require('apollo-server-express');
-//TODO: profile??? does it go here or its own graphql schema
 
-//TODO: Migrate from index for module joining, double check it works 
+//TODO: profile??? does it go here or its own graphql schema
+//TODO: Left on user model:
+  // Edit user Mutation (username, avatar)
+  // adding and deleting mixes? 
+  // figure out profile stuff
+  // query user profile
+  // query user mixes
+  // query user collection
+  //! When above done, test in apollo playground AND THEN add them to the docs gql files
+
+  // ------ Module: user gql module / type node
 const user = gql`
 
   # User type for user module base def 
@@ -61,4 +71,5 @@ const user = gql`
   
 `;
 
+//-------- Export
 module.exports = user;

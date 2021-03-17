@@ -11,8 +11,13 @@ const options = {
 }
 // Mixlist subschema Schema
   // Track
+    //tracktype set to bandcamp or discogs which can determine if its a release or a song endpoint / display stuff 
 
 const trackSchema = new Schema({
+  trackType: {
+    type: String,
+    required: true
+  },
   title: {
     type: String,
     required: true
