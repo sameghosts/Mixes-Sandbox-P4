@@ -2,6 +2,7 @@
 const { gql } = require('apollo-server-express');
 
 //TODO: Define the schema 
+  //initial pass
 //TODO: Define subschema
 //TODO: Queries and resolves
 
@@ -19,16 +20,25 @@ type MixList {
   featuredText: String
   tracks: [Track]
   comments: [Comment]
+  createdAt: String!
+  updatedAt: String!
 }
 # Mixlist exted queries
 
 # Mixlist extend mutations
 
 # Other types / Inputs
+#input MixListInput
+#input CommentInput
+#input TrackInput
+
 type Comment {
+  id: ID!
   user: User!
   body: String!
   date: String!
+  createdAt: String!
+  updatedAt: String!
 
 }
 
