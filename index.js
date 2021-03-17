@@ -19,14 +19,17 @@ const app = EXPRESS()
 
 // Models for graphql server context
 const AppModels = require('./models');
+const AuthMiddleware = require('./middleware/auth')
 
 //middleware
   //? Do I need cors?
-app.use(CORS())
+// app.use(CORS())
 
 //body parsing 
-app.use(EXPRESS.urlencoded({ extended: false}))
-app.use(EXPRESS.json())
+// app.use(EXPRESS.urlencoded({ extended: false}))
+// app.use(EXPRESS.json())
+
+app.use(AuthMiddleware);
 
 //TODO: set up initial calls and stub todo routes with graphql
 const SERVER = new ApolloServer({
@@ -34,8 +37,17 @@ const SERVER = new ApolloServer({
   resolvers: resolvers,
   schemaDirectives: schemaDirectives,
   playground: true,
-  context: {
-    ...AppModels
+  context: ({ req }) => {
+    let {
+      user,
+      isAuth,
+    } = req;
+    return{
+      req,
+      user,
+      isAuth,
+      ...AppModels,
+    }
   }
 });
 

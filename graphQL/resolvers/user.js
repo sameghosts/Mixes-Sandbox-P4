@@ -6,10 +6,10 @@ const { issueToken, serializedUser } = require('../../helper/UserAuth');
 
 module.exports = {
   Query: {
-    infoUserResolvers: () =>{
+    infoUserResolvers: () => {
       return 'Hello from user resolver.'
     },
-    loginUser:  async (_, {
+    loginUser: async (_, {
       username,
       password
     }, {
@@ -51,34 +51,31 @@ module.exports = {
     }) => {
       try {
         let { username, email } = newUser
-      // First Check if username is taken
-      let user;
-      user = await User.findOne({ username: username });
-      if (user){
-        throw new Error("Username is already taken!")
-      }
-      // Check if email registered
-      user = await User.findOne({
-        email: email
-      });
-      if (user) {
-        throw new Error("Email is already registered!")
-      }
-      // Create new user instance
-      user = new User(newUser);
-      // hash the password
-      user.password = await bcrypt.hash(newUser.password, 10);
-      // save the user to db
-      let result = await user.save();
-      result = result.toObject();
-      result.id = result._id
-      result = serializedUser(result);
-      // issue the authentication JWT token
-      let token = await issueToken(result);
-      return {
-        token,
-        user: result
-      }
+        // First Check if username is taken
+        let user = await User.findOne({ username: username });
+        if (user) {
+          throw new ApolloError("Username is already taken!", '403')
+        }
+        // Check if email registered
+        user = await User.findOne({
+          email: email
+        });
+        if (user) {
+          throw new ApolloError("Email is already registered!", '403')
+        }
+        // Create new user instance
+        user = new User(newUser);
+        // hash the password
+        user.password = await bcrypt.hash(newUser.password, 10);
+        // save the user to db
+        let result = await user.save();
+        result = await serializedUser(result);
+        // issue the authentication JWT token
+        let token = await issueToken(result);
+        return {
+          token,
+          user: result
+        }
 
       } catch (err) {
         throw new ApolloError(err.message, 400)
