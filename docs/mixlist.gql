@@ -1,6 +1,28 @@
 # MixList Initial query with dummy data
 
-
+mutation CREATE_MIX_LIST(
+  $name: String!
+  $tagline: String!
+  $authorDisplay: String!
+) {
+  createMixList(
+    newMixList: {
+      name: $name
+      tagline: $tagline
+      authorDisplay: $authorDisplay
+    }
+  ) {
+    name
+    authorDisplay
+    tagline
+  }
+}
+# Example apollo query variables
+# {
+# 		"name": "here is a name",
+#     "tagline": "hynpotic techno and acid",
+#     "authorDisplay": "UserMadeTestMix"
+# }		
 
 
 

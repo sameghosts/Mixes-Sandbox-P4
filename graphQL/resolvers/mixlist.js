@@ -23,12 +23,13 @@ module.exports = {
     }
   },
   Mutation: {
-    createMixList: async () => {
-      return {
-        name: "Trance Mix 1",
-        authorDisplay: "Sameghosts",
-        tagline: "Hot Trance Bangers for the summer"
-      }
+    createMixList: async (
+      _, 
+      { newMixList },
+      { MixList },
+    ) => {
+      let result = await MixList.create(newMixList);
+      return result;
     }
   }
 }

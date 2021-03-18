@@ -30,7 +30,7 @@ extend type Query {
 
 # Mixlist extend Mutations
 extend type Mutation {
-  createMixList(newMix: MixListInput): MixList!
+  createMixList(newMixList: MixListInput): MixList!
   # deleteMixList
   #updateMixList
 }
