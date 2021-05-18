@@ -41,10 +41,7 @@ The ideal user is:
 - [x] Project Management Plan / Kanban
 - [x] Plan for future iterations and work
 
-## Roadblocks
-- [ ] Difficulty implementing new technology
-- [ ] Problems with scope
-- [ ] Complete loss of sanity and will to live
+
 
 ## Project Planning and iterations
 ![](https://i.imgur.com/YznJAFg.png)
