@@ -37,7 +37,7 @@ const user = gql`
   }
 
   # User Mutations
-  extend type Mutation{
+  extend type Mutation {
     registerUser(newUser: UserInput!): AuthUser!
   }
   # TODO: figure out if I will be doing subscriptions
